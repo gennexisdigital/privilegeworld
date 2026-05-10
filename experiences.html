@@ -9,6 +9,31 @@
   :root { --black:#080808; --card:#1a1a1a; --border:rgba(255,255,255,0.08); --gold:#c9a96e; --gold-bright:#e8d5b0; --white:#f5f2ee; --muted:rgba(245,242,238,0.5); }
   *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
   html, body { background: var(--black); color: var(--white); font-family:'Montserrat',sans-serif; font-weight:300; }
+
+    /* ─── TICKER ─── */
+  .ticker {
+    background: var(--gold);
+    color: var(--black);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 8px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 200;
+  }
+  .ticker-inner {
+    display: flex;
+    gap: 80px;
+    animation: ticker 30s linear infinite;
+    white-space: nowrap;
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  
     /* ─── NAV ─── */
   nav {
     position: fixed;
