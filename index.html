@@ -1,0 +1,1993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reserved World – Bespoke Luxury Travel & Elite Event Access</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #080808;
+    --deep: #0d0d0d;
+    --surface: #141414;
+    --card: #1a1a1a;
+    --border: rgba(255,255,255,0.08);
+    --gold: #c9a96e;
+    --gold-light: #e8d5b0;
+    --gold-dim: rgba(201,169,110,0.15);
+    --white: #f5f2ee;
+    --muted: rgba(245,242,238,0.5);
+    --nav-h: 80px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+    overflow-x: hidden;
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+  /* ─── TICKER ─── */
+  .ticker {
+    background: var(--gold);
+    color: var(--black);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 8px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 200;
+  }
+  .ticker-inner {
+    display: flex;
+    gap: 80px;
+    animation: ticker 30s linear infinite;
+    white-space: nowrap;
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    height: var(--nav-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    background: rgba(8,8,8,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s;
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+    margin-left: 60px;
+  }
+
+  .nav-links > li { position: relative; }
+
+  .nav-links > li > a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .nav-links > li > a:hover, .nav-links > li:hover > a { color: var(--gold); }
+
+  .nav-links > li > a .caret {
+    font-size: 8px;
+    transition: transform 0.2s;
+    display: inline-block;
+  }
+  .nav-links > li:hover > a .caret { transform: rotate(180deg); }
+
+  /* Mega dropdown */
+  .dropdown {
+    position: absolute;
+    top: calc(100% + 20px);
+    left: -20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    min-width: 220px;
+    padding: 20px 0;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: opacity 0.25s, transform 0.25s;
+  }
+  .nav-links > li:hover .dropdown {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+  .dropdown a {
+    display: block;
+    padding: 10px 24px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s, padding-left 0.2s;
+  }
+  .dropdown a:hover { color: var(--gold); padding-left: 32px; }
+  .dropdown-group-label {
+    display: block;
+    padding: 10px 24px 6px;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    border-top: 1px solid var(--border);
+    margin-top: 6px;
+  }
+  .dropdown-group-label:first-child { border-top: none; margin-top: 0; }
+
+  .nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav-tel {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+
+  .btn-outline {
+    padding: 10px 24px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    background: transparent;
+  }
+  .btn-outline:hover { background: var(--gold); color: var(--black); }
+
+  /* ─── HERO ─── */
+  .hero {
+    height: calc(100vh - 40px);
+    min-height: 600px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+    overflow: hidden;
+  }
+
+  /* ── SLIDESHOW BACKGROUNDS ── */
+  .hero-slides {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity;
+  }
+  .hero-slide.active { opacity: 1; }
+
+  /* Each slide has a unique cinematic gradient + Ken Burns pan */
+  .hero-slide-inner {
+    position: absolute;
+    inset: -8%;
+    background-size: cover;
+    background-position: center;
+    will-change: transform;
+  }
+
+  /* Slide 1 — deep Santorini blue dusk */
+  .slide-1 .hero-slide-inner {
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 30%, rgba(12,28,80,0.95) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 20% 80%, rgba(6,14,40,0.9) 0%, transparent 55%),
+      radial-gradient(ellipse 100% 50% at 50% 0%, rgba(201,169,110,0.25) 0%, transparent 40%),
+      linear-gradient(160deg, #03080f 0%, #0a1628 30%, #04111e 60%, #080808 100%);
+    animation: kenburns-1 10s ease-in-out infinite alternate;
+  }
+  @keyframes kenburns-1 {
+    from { transform: scale(1.0) translate(0px, 0px); }
+    to   { transform: scale(1.08) translate(-20px, -10px); }
+  }
+
+  /* Slide 2 — Saint-Tropez golden sunset */
+  .slide-2 .hero-slide-inner {
+    background:
+      radial-gradient(ellipse 90% 50% at 80% 20%, rgba(201,120,20,0.8) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 70% at 15% 75%, rgba(80,30,10,0.95) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 40% at 50% 0%, rgba(230,160,60,0.3) 0%, transparent 50%),
+      linear-gradient(145deg, #1a0a00 0%, #2d1200 25%, #0f0800 55%, #080808 100%);
+    animation: kenburns-2 10s ease-in-out infinite alternate;
+  }
+  @keyframes kenburns-2 {
+    from { transform: scale(1.06) translate(15px, 5px); }
+    to   { transform: scale(1.0) translate(-5px, 15px); }
+  }
+
+  /* Slide 3 — Monaco emerald night */
+  .slide-3 .hero-slide-inner {
+    background:
+      radial-gradient(ellipse 75% 55% at 30% 40%, rgba(10,60,40,0.9) 0%, transparent 58%),
+      radial-gradient(ellipse 50% 70% at 85% 70%, rgba(4,25,18,0.95) 0%, transparent 55%),
+      radial-gradient(ellipse 80% 35% at 55% 10%, rgba(201,169,110,0.2) 0%, transparent 45%),
+      linear-gradient(155deg, #020d07 0%, #071a10 30%, #030e07 60%, #080808 100%);
+    animation: kenburns-3 10s ease-in-out infinite alternate;
+  }
+  @keyframes kenburns-3 {
+    from { transform: scale(1.04) translate(-10px, 10px); }
+    to   { transform: scale(1.1) translate(10px, -15px); }
+  }
+
+  /* Slide 4 — Mykonos ivory & deep indigo */
+  .slide-4 .hero-slide-inner {
+    background:
+      radial-gradient(ellipse 85% 45% at 60% 25%, rgba(40,30,90,0.9) 0%, transparent 55%),
+      radial-gradient(ellipse 55% 65% at 10% 80%, rgba(15,10,40,0.95) 0%, transparent 55%),
+      radial-gradient(ellipse 65% 35% at 45% 5%, rgba(201,169,110,0.22) 0%, transparent 45%),
+      linear-gradient(140deg, #050310 0%, #100c28 30%, #06040f 60%, #080808 100%);
+    animation: kenburns-4 10s ease-in-out infinite alternate;
+  }
+  @keyframes kenburns-4 {
+    from { transform: scale(1.07) translate(8px, -8px); }
+    to   { transform: scale(1.02) translate(-12px, 12px); }
+  }
+
+  /* Slide 5 — Dubai amber skyline */
+  .slide-5 .hero-slide-inner {
+    background:
+      radial-gradient(ellipse 80% 50% at 75% 30%, rgba(160,90,10,0.85) 0%, transparent 58%),
+      radial-gradient(ellipse 60% 60% at 20% 70%, rgba(60,30,5,0.95) 0%, transparent 55%),
+      radial-gradient(ellipse 90% 30% at 50% 0%, rgba(220,150,40,0.3) 0%, transparent 40%),
+      linear-gradient(150deg, #120800 0%, #220f00 25%, #0c0600 55%, #080808 100%);
+    animation: kenburns-5 10s ease-in-out infinite alternate;
+  }
+  @keyframes kenburns-5 {
+    from { transform: scale(1.0) translate(5px, 12px); }
+    to   { transform: scale(1.09) translate(-15px, -8px); }
+  }
+
+  /* ── CINEMATIC VIGNETTE OVERLAY ── */
+  .hero-vignette {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      radial-gradient(ellipse 120% 120% at 50% 50%, transparent 40%, rgba(8,8,8,0.7) 100%),
+      linear-gradient(to bottom,
+        rgba(8,8,8,0.35) 0%,
+        rgba(8,8,8,0.05) 30%,
+        rgba(8,8,8,0.15) 60%,
+        rgba(8,8,8,0.92) 90%,
+        rgba(8,8,8,1) 100%
+      );
+    pointer-events: none;
+  }
+
+  /* ── PARTICLE CANVAS ── */
+  #heroCanvas {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* ── LIGHT LEAK SWEEP ── */
+  .hero-lightsweep {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .hero-lightsweep::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 40%;
+    height: 200%;
+    background: linear-gradient(
+      105deg,
+      transparent 0%,
+      rgba(201,169,110,0.04) 40%,
+      rgba(201,169,110,0.10) 50%,
+      rgba(201,169,110,0.04) 60%,
+      transparent 100%
+    );
+    animation: lightsweep 8s ease-in-out infinite;
+    animation-delay: 2s;
+    transform: skewX(-15deg);
+  }
+  @keyframes lightsweep {
+    0%   { left: -60%; opacity: 0; }
+    10%  { opacity: 1; }
+    70%  { opacity: 1; }
+    100% { left: 130%; opacity: 0; }
+  }
+
+  /* ── HERO SLIDE DOTS ── */
+  .hero-dots {
+    position: absolute;
+    bottom: 44px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .hero-dot {
+    width: 24px;
+    height: 2px;
+    background: rgba(201,169,110,0.3);
+    cursor: pointer;
+    transition: background 0.4s, width 0.4s;
+    border: none;
+    padding: 0;
+  }
+  .hero-dot.active {
+    background: var(--gold);
+    width: 40px;
+  }
+
+  /* ── SLIDE LOCATION LABEL ── */
+  .hero-location {
+    position: absolute;
+    top: 50%;
+    right: 48px;
+    transform: translateY(-50%);
+    z-index: 10;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(201,169,110,0.6);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: opacity 0.5s;
+  }
+  .hero-location::before {
+    content: '';
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, var(--gold));
+  }
+
+  /* ── HERO CONTENT ── */
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
+    width: 100%;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fade-slide-up 1s ease 0.3s forwards;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(56px, 7.5vw, 108px);
+    font-weight: 300;
+    line-height: 0.97;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    max-width: 860px;
+    opacity: 0;
+    animation: fade-slide-up 1.1s ease 0.55s forwards;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: 13px;
+    color: rgba(245,242,238,0.6);
+    max-width: 460px;
+    line-height: 1.9;
+    margin-bottom: 44px;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    animation: fade-slide-up 1.1s ease 0.8s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    opacity: 0;
+    animation: fade-slide-up 1.1s ease 1.0s forwards;
+  }
+
+  @keyframes fade-slide-up {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .btn-gold {
+    padding: 18px 40px;
+    background: var(--gold);
+    color: var(--black);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: opacity 0.25s, transform 0.25s, box-shadow 0.25s;
+    display: inline-block;
+    box-shadow: 0 8px 32px rgba(201,169,110,0.25);
+  }
+  .btn-gold:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 40px rgba(201,169,110,0.4);
+  }
+
+  /* Scroll indicator */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 48px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(201,169,110,0.5);
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fade-slide-up 1s ease 1.4s forwards;
+  }
+  .scroll-line {
+    width: 1px;
+    height: 52px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scroll-pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes scroll-pulse {
+    0%, 100% { opacity: 0.8; transform: scaleY(1); }
+    50% { opacity: 0.2; transform: scaleY(0.5); }
+  }
+
+  /* ─── REVIEWS ─── */
+  .reviews-strip {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 40px 0;
+    overflow: hidden;
+  }
+  .reviews-inner {
+    display: flex;
+    gap: 48px;
+    animation: ticker 50s linear infinite;
+  }
+  .review-card {
+    flex-shrink: 0;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 24px 28px;
+    min-width: 280px;
+    max-width: 280px;
+  }
+  .review-stars { color: var(--gold); font-size: 13px; letter-spacing: 2px; margin-bottom: 10px; }
+  .review-title { font-size: 13px; font-weight: 500; margin-bottom: 8px; color: var(--white); }
+  .review-text { font-size: 11px; color: var(--muted); line-height: 1.7; }
+  .review-author { font-size: 10px; color: var(--gold); margin-top: 12px; font-weight: 500; letter-spacing: 0.08em; }
+
+  /* ─── SECTIONS ─── */
+  section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 100px 48px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 80px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .section-desc {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+    max-width: 520px;
+    margin-bottom: 56px;
+  }
+
+  /* ─── SERVICES GRID ─── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border);
+  }
+
+  .service-card {
+    background: var(--surface);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--gold);
+    transition: width 0.4s;
+  }
+  .service-card:hover { background: var(--card); }
+  .service-card:hover::before { width: 100%; }
+
+  .service-icon {
+    font-size: 28px;
+    margin-bottom: 20px;
+    display: block;
+  }
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+  .service-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .service-arrow {
+    position: absolute;
+    bottom: 32px; right: 32px;
+    color: var(--gold);
+    font-size: 18px;
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .service-card:hover .service-arrow { opacity: 1; transform: translateX(0); }
+
+  /* ─── LISTINGS ─── */
+  .listings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 48px;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  .listing-card {
+    background: var(--card);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .listing-img {
+    height: 240px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Gradient placeholder images using CSS */
+  .listing-img-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease;
+    position: relative;
+  }
+  .listing-card:hover .listing-img-inner { transform: scale(1.06); }
+
+  .villa-img-1 { background: linear-gradient(135deg, #2d1f0a 0%, #1a1209 40%, #3d2b10 100%); }
+  .villa-img-2 { background: linear-gradient(135deg, #0d1a2d 0%, #091218 40%, #1a3050 100%); }
+  .villa-img-3 { background: linear-gradient(135deg, #1a2d1a 0%, #0d180d 40%, #2d4a1a 100%); }
+  .villa-img-4 { background: linear-gradient(135deg, #2d1a0d 0%, #180d09 40%, #4a2d1a 100%); }
+  .yacht-img-1 { background: linear-gradient(135deg, #091828 0%, #060f1a 40%, #0d2540 100%); }
+  .yacht-img-2 { background: linear-gradient(135deg, #280918 0%, #1a0609 40%, #400d25 100%); }
+  .yacht-img-3 { background: linear-gradient(135deg, #181828 0%, #0f0f1a 40%, #252540 100%); }
+  .yacht-img-4 { background: linear-gradient(135deg, #0a1a0a 0%, #060f06 40%, #0f2810 100%); }
+  .dest-img-1 { background: linear-gradient(135deg, #3d2b10 0%, #1a1209 60%, #2d1f0a 100%); }
+  .dest-img-2 { background: linear-gradient(135deg, #0d2540 0%, #091218 60%, #102d4a 100%); }
+  .dest-img-3 { background: linear-gradient(135deg, #2d1a0d 0%, #180d09 60%, #3d2010 100%); }
+  .dest-img-4 { background: linear-gradient(135deg, #1a0d28 0%, #0f0918 60%, #280d3d 100%); }
+  .dest-img-5 { background: linear-gradient(135deg, #0d281a 0%, #09180f 60%, #102d20 100%); }
+  .dest-img-6 { background: linear-gradient(135deg, #28150d 0%, #180e09 60%, #3d1a0d 100%); }
+
+  /* Decorative icon overlay */
+  .listing-img::after {
+    content: attr(data-icon);
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    opacity: 0.12;
+    pointer-events: none;
+  }
+
+  .listing-tag {
+    position: absolute;
+    top: 16px; left: 16px;
+    background: var(--gold);
+    color: var(--black);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+  }
+
+  .listing-info {
+    padding: 20px 22px 24px;
+  }
+  .listing-location {
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .listing-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .listing-meta {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .listing-meta-item {
+    font-size: 10px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .listing-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--gold);
+    font-weight: 400;
+  }
+  .listing-price span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  /* ─── DESTINATIONS ─── */
+  .dest-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .dest-card {
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dest-img {
+    width: 100%; height: 100%;
+    transition: transform 0.6s ease;
+  }
+  .dest-card:hover .dest-img { transform: scale(1.08); }
+
+  .dest-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.1) 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 28px;
+  }
+
+  .dest-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 300;
+    margin-bottom: 6px;
+  }
+  .dest-country {
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .dest-link {
+    margin-top: 12px;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s, transform 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dest-card:hover .dest-link { opacity: 1; transform: translateY(0); }
+
+  /* ─── EVENTS ─── */
+  .events-section {
+    background: var(--surface);
+    max-width: 100%;
+    padding: 100px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .events-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    margin-top: 56px;
+  }
+
+  .event-card {
+    background: var(--card);
+    padding: 32px 24px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .event-card:hover { border-color: var(--gold); background: var(--black); }
+
+  .event-icon { font-size: 22px; margin-bottom: 16px; display: block; }
+  .event-cat {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .event-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .event-detail {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ─── TRANSPORT GRID ─── */
+  .transport-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+
+  .transport-card {
+    background: var(--surface);
+    padding: 56px 48px;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+  }
+  .transport-card:hover { border-color: var(--gold); }
+
+  .transport-icon { font-size: 36px; }
+  .transport-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+  }
+  .transport-desc { font-size: 12px; color: var(--muted); line-height: 1.7; max-width: 360px; }
+  .transport-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 8px;
+  }
+
+  /* ─── TRUST STATS ─── */
+  .stats-bar {
+    background: var(--gold);
+    padding: 0;
+    max-width: 100%;
+  }
+  .stats-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .stat {
+    padding: 48px 0;
+    border-right: 1px solid rgba(0,0,0,0.1);
+    text-align: center;
+    color: var(--black);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  /* ─── CONTACT CTA ─── */
+  .cta-section {
+    text-align: center;
+    padding: 120px 48px;
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    background: var(--black);
+  }
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(201,169,110,0.06) 0%, transparent 70%);
+  }
+  .cta-section .section-label { justify-content: center; }
+  .cta-section .section-label::after { display: none; }
+  .cta-section .section-label::before {
+    content: '';
+    width: 80px; height: 1px;
+    background: var(--border);
+  }
+  .cta-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 300;
+    max-width: 700px;
+    margin: 0 auto 24px;
+    position: relative;
+  }
+  .cta-section h2 em { font-style: italic; color: var(--gold); }
+  .cta-section p {
+    color: var(--muted);
+    font-size: 13px;
+    max-width: 480px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+    position: relative;
+  }
+  .cta-btns {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    position: relative;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 80px 48px 40px;
+  }
+  .footer-top {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid var(--border);
+  }
+  .footer-brand .nav-logo { display: block; margin-bottom: 20px; font-size: 20px; }
+  .footer-brand p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.8;
+    max-width: 280px;
+    margin-bottom: 28px;
+  }
+  .footer-social {
+    display: flex;
+    gap: 12px;
+  }
+  .footer-social a {
+    width: 36px; height: 36px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+
+  .footer-col h4 {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a {
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: var(--white); }
+
+  .footer-bottom {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-bottom p { font-size: 11px; color: var(--muted); }
+  .footer-bottom-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+  .footer-bottom-links a {
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-bottom-links a:hover { color: var(--white); }
+
+  /* ─── WHATSAPP FLOAT ─── */
+  .wa-float {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 56px; height: 56px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    z-index: 999;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.6); }
+
+  /* ─── MOBILE MENU TOGGLE ─── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    width: 24px; height: 1px;
+    background: var(--white);
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1100px) {
+    .cards-grid { grid-template-columns: repeat(2, 1fr); }
+    .events-grid { grid-template-columns: repeat(3, 1fr); }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-links, .nav-cta .nav-tel { display: none; }
+    .hamburger { display: flex; }
+    .hero-content { padding: 0 24px; }
+    section { padding: 72px 24px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .dest-grid { grid-template-columns: 1fr; }
+    .events-grid { grid-template-columns: 1fr 1fr; }
+    .transport-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 36px; }
+    .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Ticker -->
+<div class="ticker" style="position:relative; z-index:200;">
+  <div class="ticker-inner" id="tickerInner">
+    <span>Luxury Hotel Bookings Worldwide</span>
+    <span>·</span>
+    <span>Exclusive Event Access</span>
+    <span>·</span>
+    <span>Private Villa Rentals</span>
+    <span>·</span>
+    <span>Yacht Charters</span>
+    <span>·</span>
+    <span>Private Jet & Helicopter</span>
+    <span>·</span>
+    <span>VIP Sports Hospitality</span>
+    <span>·</span>
+    <span>Concierge Services 24/7</span>
+    <span>·</span>
+    <span>Luxury Hotel Bookings Worldwide</span>
+    <span>·</span>
+    <span>Exclusive Event Access</span>
+    <span>·</span>
+    <span>Private Villa Rentals</span>
+    <span>·</span>
+    <span>Yacht Charters</span>
+    <span>·</span>
+    <span>Private Jet & Helicopter</span>
+    <span>·</span>
+    <span>VIP Sports Hospitality</span>
+    <span>·</span>
+    <span>Concierge Services 24/7</span>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav>
+  <a href="/" class="nav-logo">Reserved<span>World</span></a>
+
+  <ul class="nav-links">
+    <li>
+      <a href="#">Hotels <span class="caret">▾</span></a>
+      <div class="dropdown">
+        <span class="dropdown-group-label">By Category</span>
+        <a href="#">Luxury Hotels Worldwide</a>
+        <a href="#">Boutique Hotels</a>
+        <a href="#">Palace Hotels</a>
+        <span class="dropdown-group-label">By Destination</span>
+        <a href="#">Monaco</a>
+        <a href="#">Saint-Tropez</a>
+        <a href="#">Dubai</a>
+        <a href="#">Mykonos</a>
+      </div>
+    </li>
+    <li>
+      <a href="#">Destinations <span class="caret">▾</span></a>
+      <div class="dropdown">
+        <span class="dropdown-group-label">Top Destinations</span>
+        <a href="#">Mykonos</a>
+        <a href="#">Saint-Tropez</a>
+        <a href="#">Monaco</a>
+        <a href="#">Ibiza</a>
+        <a href="#">Marbella</a>
+        <a href="#">Cannes</a>
+        <a href="#">Dubai</a>
+        <a href="#">London</a>
+        <a href="#">Paris</a>
+        <a href="#">Tulum</a>
+      </div>
+    </li>
+    <li>
+      <a href="#">Events <span class="caret">▾</span></a>
+      <div class="dropdown">
+        <span class="dropdown-group-label">Sports</span>
+        <a href="#">Formula 1</a>
+        <a href="#">Champions League</a>
+        <a href="#">Tennis Grand Slams</a>
+        <a href="#">Golf Majors</a>
+        <a href="#">FIFA World Cup</a>
+        <span class="dropdown-group-label">Entertainment</span>
+        <a href="#">Concerts & Tours</a>
+        <a href="#">Film Festivals</a>
+        <a href="#">Fashion Week</a>
+        <a href="#">Red Carpet Events</a>
+      </div>
+    </li>
+    <li>
+      <a href="#">Villas <span class="caret">▾</span></a>
+      <div class="dropdown">
+        <span class="dropdown-group-label">By Type</span>
+        <a href="#">Luxury Villas</a>
+        <a href="#">Ski Chalets</a>
+        <span class="dropdown-group-label">By Destination</span>
+        <a href="#">Saint-Tropez</a>
+        <a href="#">Ibiza</a>
+        <a href="#">Mykonos</a>
+        <a href="#">Courchevel</a>
+        <a href="#">Marbella</a>
+      </div>
+    </li>
+    <li>
+      <a href="#">Yachts <span class="caret">▾</span></a>
+      <div class="dropdown">
+        <span class="dropdown-group-label">Charter</span>
+        <a href="#">Yacht Charter Worldwide</a>
+        <a href="#">Day Charters</a>
+        <a href="#">Week Charters</a>
+      </div>
+    </li>
+    <li>
+      <a href="#">Aviation <span class="caret">▾</span></a>
+      <div class="dropdown">
+        <span class="dropdown-group-label">Services</span>
+        <a href="#">Private Jet Charter</a>
+        <a href="#">Helicopter Transfers</a>
+        <a href="#">Helicopter Tours</a>
+      </div>
+    </li>
+  </ul>
+
+  <div class="nav-cta">
+    <span class="nav-tel">+1 800 000 0000</span>
+    <a href="#contact" class="btn-outline">Enquire Now</a>
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero" style="margin-top:40px;">
+
+  <!-- Cinematic slideshow backgrounds -->
+  <div class="hero-slides">
+    <div class="hero-slide slide-1 active"><div class="hero-slide-inner"></div></div>
+    <div class="hero-slide slide-2"><div class="hero-slide-inner"></div></div>
+    <div class="hero-slide slide-3"><div class="hero-slide-inner"></div></div>
+    <div class="hero-slide slide-4"><div class="hero-slide-inner"></div></div>
+    <div class="hero-slide slide-5"><div class="hero-slide-inner"></div></div>
+  </div>
+
+  <!-- Cinematic vignette -->
+  <div class="hero-vignette"></div>
+
+  <!-- Floating particle canvas -->
+  <canvas id="heroCanvas"></canvas>
+
+  <!-- Light sweep shimmer -->
+  <div class="hero-lightsweep"></div>
+
+  <!-- Location label (rotated, right side) -->
+  <div class="hero-location" id="heroLocation">Monaco · Côte d'Azur</div>
+
+  <!-- Main content -->
+  <div class="hero-content">
+    <div class="hero-badge">Bespoke Luxury Travel</div>
+    <h1>Your World,<br><em>Reserved.</em></h1>
+    <p class="hero-sub">Elite access to the world's most coveted experiences — from private villas and superyachts to exclusive VIP hospitality at global sporting events and cultural spectacles.</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-gold">Explore Experiences</a>
+      <a href="#contact" class="btn-outline">Contact Concierge</a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+
+  <!-- Slide dots -->
+  <div class="hero-dots" id="heroDots">
+    <button class="hero-dot active" data-index="0"></button>
+    <button class="hero-dot" data-index="1"></button>
+    <button class="hero-dot" data-index="2"></button>
+    <button class="hero-dot" data-index="3"></button>
+    <button class="hero-dot" data-index="4"></button>
+  </div>
+</div>
+
+<!-- Reviews Strip -->
+<div class="reviews-strip">
+  <div class="reviews-inner" id="reviewsInner">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-title">Beyond All Expectations</div>
+      <div class="review-text">The team secured us a last-minute villa in Saint-Tropez during peak season. Absolutely impossible, yet they delivered.</div>
+      <div class="review-author">Alexandra M. — June 2025</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-title">F1 Monaco — Unforgettable</div>
+      <div class="review-text">VIP paddock access and a stunning terrace suite. They handled every detail flawlessly. Will use every year.</div>
+      <div class="review-author">James R. — May 2025</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-title">The Only Concierge I Trust</div>
+      <div class="review-text">From yacht charter to restaurant reservations — they have access to things that don't exist anywhere else.</div>
+      <div class="review-author">Natasha K. — April 2025</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-title">Champions League Final</div>
+      <div class="review-text">Hospitality box, transfers, hotel — everything perfectly coordinated. Pure luxury from start to finish.</div>
+      <div class="review-author">Olivier D. — May 2025</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-title">Mykonos Dream Trip</div>
+      <div class="review-text">Private villa, yacht charter, table at every top restaurant. Reserved World made the impossible happen.</div>
+      <div class="review-author">Sophie L. — July 2025</div>
+    </div>
+    <!-- Duplicate for seamless loop -->
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-title">Beyond All Expectations</div>
+      <div class="review-text">The team secured us a last-minute villa in Saint-Tropez during peak season. Absolutely impossible, yet they delivered.</div>
+      <div class="review-author">Alexandra M. — June 2025</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-title">F1 Monaco — Unforgettable</div>
+      <div class="review-text">VIP paddock access and a stunning terrace suite. They handled every detail flawlessly. Will use every year.</div>
+      <div class="review-author">James R. — May 2025</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-title">The Only Concierge I Trust</div>
+      <div class="review-text">From yacht charter to restaurant reservations — they have access to things that don't exist anywhere else.</div>
+      <div class="review-author">Natasha K. — April 2025</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-title">Champions League Final</div>
+      <div class="review-text">Hospitality box, transfers, hotel — everything perfectly coordinated. Pure luxury from start to finish.</div>
+      <div class="review-author">Olivier D. — May 2025</div>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <div class="review-title">Mykonos Dream Trip</div>
+      <div class="review-text">Private villa, yacht charter, table at every top restaurant. Reserved World made the impossible happen.</div>
+      <div class="review-author">Sophie L. — July 2025</div>
+    </div>
+  </div>
+</div>
+
+<!-- Services -->
+<section id="services">
+  <div class="section-label">Our Services</div>
+  <h2 class="section-title">Handpicked Services for<br>the <em>Discerning Few</em></h2>
+  <p class="section-desc">Every experience is curated, every detail considered. We open doors that others cannot.</p>
+
+  <div class="services-grid">
+    <a href="#" class="service-card fade-up">
+      <span class="service-icon">🏨</span>
+      <div class="service-name">Luxury Travel</div>
+      <p class="service-desc">Bespoke itineraries to the world's most extraordinary destinations, with access to properties unavailable elsewhere.</p>
+      <span class="service-arrow">→</span>
+    </a>
+    <a href="#" class="service-card fade-up">
+      <span class="service-icon">✦</span>
+      <div class="service-name">Lifestyle Management</div>
+      <p class="service-desc">Your personal concierge handles everything — reservations, acquisitions, travel logistics, and beyond.</p>
+      <span class="service-arrow">→</span>
+    </a>
+    <a href="#" class="service-card fade-up">
+      <span class="service-icon">🥂</span>
+      <div class="service-name">Restaurants & Nightlife</div>
+      <p class="service-desc">Coveted tables, private dining rooms, and exclusive access to the world's most sought-after venues.</p>
+      <span class="service-arrow">→</span>
+    </a>
+    <a href="#" class="service-card fade-up">
+      <span class="service-icon">🎟</span>
+      <div class="service-name">Exclusive Event Access</div>
+      <p class="service-desc">VIP hospitality at Formula 1, Champions League, fashion weeks, film festivals, and world-class concerts.</p>
+      <span class="service-arrow">→</span>
+    </a>
+    <a href="#" class="service-card fade-up">
+      <span class="service-icon">🎪</span>
+      <div class="service-name">Private & Corporate Events</div>
+      <p class="service-desc">From intimate celebrations to large-scale corporate retreats, we create unforgettable moments.</p>
+      <span class="service-arrow">→</span>
+    </a>
+    <a href="#" class="service-card fade-up">
+      <span class="service-icon">🛥</span>
+      <div class="service-name">Yacht & Aviation</div>
+      <p class="service-desc">Superyacht charters, private jet services, and helicopter transfers for seamless elite travel.</p>
+      <span class="service-arrow">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat fade-up">
+      <div class="stat-num">4.9★</div>
+      <div class="stat-label">Average Rating</div>
+    </div>
+    <div class="stat fade-up">
+      <div class="stat-num">500+</div>
+      <div class="stat-label">Elite Properties</div>
+    </div>
+    <div class="stat fade-up">
+      <div class="stat-num">80+</div>
+      <div class="stat-label">Destinations</div>
+    </div>
+    <div class="stat fade-up">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Concierge Access</div>
+    </div>
+  </div>
+</div>
+
+<!-- Villas -->
+<section id="villas">
+  <div class="listings-header">
+    <div>
+      <div class="section-label">Featured Properties</div>
+      <h2 class="section-title">Extraordinary<br><em>Villas</em></h2>
+    </div>
+    <a href="#" class="btn-outline">View All Villas</a>
+  </div>
+
+  <div class="cards-grid">
+    <a href="#" class="listing-card fade-up">
+      <div class="listing-img villa-img-1" data-icon="🌴">
+        <div class="listing-img-inner villa-img-1"></div>
+        <span class="listing-tag">Saint-Tropez</span>
+      </div>
+      <div class="listing-info">
+        <div class="listing-location">Saint-Tropez, France</div>
+        <div class="listing-name">Villa Lumière</div>
+        <div class="listing-meta">
+          <span class="listing-meta-item">👤 16 guests</span>
+          <span class="listing-meta-item">🛏 8 bedrooms</span>
+          <span class="listing-meta-item">🏊 Pool</span>
+        </div>
+        <div class="listing-price">€120,000 <span>/ week</span></div>
+      </div>
+    </a>
+    <a href="#" class="listing-card fade-up">
+      <div class="listing-img villa-img-2" data-icon="🌊">
+        <div class="listing-img-inner villa-img-2"></div>
+        <span class="listing-tag">Mykonos</span>
+      </div>
+      <div class="listing-info">
+        <div class="listing-location">Mykonos, Greece</div>
+        <div class="listing-name">Villa Aegean</div>
+        <div class="listing-meta">
+          <span class="listing-meta-item">👤 12 guests</span>
+          <span class="listing-meta-item">🛏 6 bedrooms</span>
+          <span class="listing-meta-item">🌊 Sea View</span>
+        </div>
+        <div class="listing-price">€61,000 <span>/ week</span></div>
+      </div>
+    </a>
+    <a href="#" class="listing-card fade-up">
+      <div class="listing-img villa-img-3" data-icon="🏝">
+        <div class="listing-img-inner villa-img-3"></div>
+        <span class="listing-tag">Ibiza</span>
+      </div>
+      <div class="listing-info">
+        <div class="listing-location">Ibiza, Spain</div>
+        <div class="listing-name">Villa Solaris</div>
+        <div class="listing-meta">
+          <span class="listing-meta-item">👤 10 guests</span>
+          <span class="listing-meta-item">🛏 5 bedrooms</span>
+          <span class="listing-meta-item">🏊 Infinity Pool</span>
+        </div>
+        <div class="listing-price">€43,500 <span>/ week</span></div>
+      </div>
+    </a>
+    <a href="#" class="listing-card fade-up">
+      <div class="listing-img villa-img-4" data-icon="🏔">
+        <div class="listing-img-inner villa-img-4"></div>
+        <span class="listing-tag">Courchevel</span>
+      </div>
+      <div class="listing-info">
+        <div class="listing-location">Courchevel, France</div>
+        <div class="listing-name">Chalet Blanc</div>
+        <div class="listing-meta">
+          <span class="listing-meta-item">👤 14 guests</span>
+          <span class="listing-meta-item">🛏 7 bedrooms</span>
+          <span class="listing-meta-item">🎿 Ski-in/out</span>
+        </div>
+        <div class="listing-price">€95,000 <span>/ week</span></div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Destinations -->
+<section id="destinations" style="padding-top:0;">
+  <div class="listings-header">
+    <div>
+      <div class="section-label">Where to Go</div>
+      <h2 class="section-title">Iconic<br><em>Destinations</em></h2>
+    </div>
+    <a href="#" class="btn-outline">All Destinations</a>
+  </div>
+
+  <div class="dest-grid">
+    <a href="#" class="dest-card fade-up">
+      <div class="dest-img dest-img-1"></div>
+      <div class="dest-overlay">
+        <div class="dest-name">Saint-Tropez</div>
+        <div class="dest-country">France</div>
+        <div class="dest-link">Explore →</div>
+      </div>
+    </a>
+    <a href="#" class="dest-card fade-up">
+      <div class="dest-img dest-img-2"></div>
+      <div class="dest-overlay">
+        <div class="dest-name">Mykonos</div>
+        <div class="dest-country">Greece</div>
+        <div class="dest-link">Explore →</div>
+      </div>
+    </a>
+    <a href="#" class="dest-card fade-up">
+      <div class="dest-img dest-img-3"></div>
+      <div class="dest-overlay">
+        <div class="dest-name">Ibiza</div>
+        <div class="dest-country">Spain</div>
+        <div class="dest-link">Explore →</div>
+      </div>
+    </a>
+    <a href="#" class="dest-card fade-up">
+      <div class="dest-img dest-img-4"></div>
+      <div class="dest-overlay">
+        <div class="dest-name">Monaco</div>
+        <div class="dest-country">Monaco</div>
+        <div class="dest-link">Explore →</div>
+      </div>
+    </a>
+    <a href="#" class="dest-card fade-up">
+      <div class="dest-img dest-img-5"></div>
+      <div class="dest-overlay">
+        <div class="dest-name">Marbella</div>
+        <div class="dest-country">Spain</div>
+        <div class="dest-link">Explore →</div>
+      </div>
+    </a>
+    <a href="#" class="dest-card fade-up">
+      <div class="dest-img dest-img-6"></div>
+      <div class="dest-overlay">
+        <div class="dest-name">Dubai</div>
+        <div class="dest-country">UAE</div>
+        <div class="dest-link">Explore →</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Events -->
+<div class="events-section">
+  <div class="events-inner">
+    <div class="section-label">VIP Access</div>
+    <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+      <h2 class="section-title">Exclusive<br><em>Event Access</em></h2>
+      <a href="#" class="btn-outline">All Events</a>
+    </div>
+
+    <div class="events-grid">
+      <a href="#" class="event-card fade-up">
+        <span class="event-icon">🏎</span>
+        <div class="event-cat">Motorsport</div>
+        <div class="event-name">Formula 1 Grand Prix</div>
+        <div class="event-detail">Monaco, Silverstone, Singapore & more. Paddock access, hospitality suites.</div>
+      </a>
+      <a href="#" class="event-card fade-up">
+        <span class="event-icon">⚽</span>
+        <div class="event-cat">Football</div>
+        <div class="event-name">Champions League</div>
+        <div class="event-detail">Finals & group stages. Executive boxes, gala dinners, official hospitality.</div>
+      </a>
+      <a href="#" class="event-card fade-up">
+        <span class="event-icon">🎾</span>
+        <div class="event-cat">Tennis</div>
+        <div class="event-name">Grand Slams</div>
+        <div class="event-detail">Wimbledon, Roland Garros, US Open. Royal Box experiences & debenture seats.</div>
+      </a>
+      <a href="#" class="event-card fade-up">
+        <span class="event-icon">🎭</span>
+        <div class="event-cat">Red Carpet</div>
+        <div class="event-name">Film Festivals</div>
+        <div class="event-detail">Cannes, Venice, Oscars. Exclusive premiere access and after-party invitations.</div>
+      </a>
+      <a href="#" class="event-card fade-up">
+        <span class="event-icon">🎵</span>
+        <div class="event-cat">Music</div>
+        <div class="event-name">World Tours</div>
+        <div class="event-detail">Front-row seats, backstage passes, meet & greets with global artists.</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Yachts -->
+<section id="yachts">
+  <div class="listings-header">
+    <div>
+      <div class="section-label">On the Water</div>
+      <h2 class="section-title">Superyacht<br><em>Charters</em></h2>
+    </div>
+    <a href="#" class="btn-outline">View All Yachts</a>
+  </div>
+
+  <div class="cards-grid">
+    <a href="#" class="listing-card fade-up">
+      <div class="listing-img yacht-img-1" data-icon="⛵">
+        <div class="listing-img-inner yacht-img-1"></div>
+        <span class="listing-tag">Motor Yacht</span>
+      </div>
+      <div class="listing-info">
+        <div class="listing-location">Mykonos, Greece</div>
+        <div class="listing-name">Ferretti 78</div>
+        <div class="listing-meta">
+          <span class="listing-meta-item">👤 12 guests</span>
+          <span class="listing-meta-item">📏 24m</span>
+          <span class="listing-meta-item">🛏 4 cabins</span>
+        </div>
+        <div class="listing-price">€6,500 <span>/ day</span></div>
+      </div>
+    </a>
+    <a href="#" class="listing-card fade-up">
+      <div class="listing-img yacht-img-2" data-icon="🚢">
+        <div class="listing-img-inner yacht-img-2"></div>
+        <span class="listing-tag">Sailing</span>
+      </div>
+      <div class="listing-info">
+        <div class="listing-location">Saint-Tropez, France</div>
+        <div class="listing-name">Falcon 115</div>
+        <div class="listing-meta">
+          <span class="listing-meta-item">👤 20 guests</span>
+          <span class="listing-meta-item">📏 35m</span>
+          <span class="listing-meta-item">🛏 5 cabins</span>
+        </div>
+        <div class="listing-price">€9,000 <span>/ day</span></div>
+      </div>
+    </a>
+    <a href="#" class="listing-card fade-up">
+      <div class="listing-img yacht-img-3" data-icon="⚓">
+        <div class="listing-img-inner yacht-img-3"></div>
+        <span class="listing-tag">Superyacht</span>
+      </div>
+      <div class="listing-info">
+        <div class="listing-location">Cannes, France</div>
+        <div class="listing-name">Aleon 50</div>
+        <div class="listing-meta">
+          <span class="listing-meta-item">👤 12 guests</span>
+          <span class="listing-meta-item">📏 16.5m</span>
+          <span class="listing-meta-item">🛏 3 cabins</span>
+        </div>
+        <div class="listing-price">€5,000 <span>/ day</span></div>
+      </div>
+    </a>
+    <a href="#" class="listing-card fade-up">
+      <div class="listing-img yacht-img-4" data-icon="🌊">
+        <div class="listing-img-inner yacht-img-4"></div>
+        <span class="listing-tag">Gulet</span>
+      </div>
+      <div class="listing-info">
+        <div class="listing-location">Bodrum, Turkey</div>
+        <div class="listing-name">Bodrum Classic</div>
+        <div class="listing-meta">
+          <span class="listing-meta-item">👤 16 guests</span>
+          <span class="listing-meta-item">📏 28m</span>
+          <span class="listing-meta-item">🛏 6 cabins</span>
+        </div>
+        <div class="listing-price">€4,200 <span>/ day</span></div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Transport -->
+<section style="padding-top:0;">
+  <div class="section-label">Getting There</div>
+  <h2 class="section-title" style="margin-bottom:48px;">Seamless<br><em>Transportation</em></h2>
+
+  <div class="transport-grid">
+    <a href="#" class="transport-card fade-up">
+      <span class="transport-icon">✈️</span>
+      <div class="transport-name">Private Jet Charter</div>
+      <p class="transport-desc">Fly on your own schedule. Choose from light jets, midsize, heavy, and ultra-long-range aircraft with personalized in-flight service.</p>
+      <span class="transport-cta">Arrange Flight →</span>
+    </a>
+    <a href="#" class="transport-card fade-up">
+      <span class="transport-icon">🚁</span>
+      <div class="transport-name">Helicopter Transfers</div>
+      <p class="transport-desc">Skip the traffic. Connect Monaco, Cannes, Saint-Tropez and Nice in minutes with our helicopter transfer service.</p>
+      <span class="transport-cta">Book Transfer →</span>
+    </a>
+    <a href="#" class="transport-card fade-up">
+      <span class="transport-icon">🚗</span>
+      <div class="transport-name">Luxury Car Rental</div>
+      <p class="transport-desc">Lamborghini, Ferrari, Rolls-Royce, Bentley. Drive the world's most extraordinary roads in the world's finest vehicles.</p>
+      <span class="transport-cta">Browse Fleet →</span>
+    </a>
+    <a href="#" class="transport-card fade-up">
+      <span class="transport-icon">⛵</span>
+      <div class="transport-name">Boat Transfers</div>
+      <p class="transport-desc">Arrive in style by private boat. Transfers between ports, islands, and venues across the Mediterranean and beyond.</p>
+      <span class="transport-cta">Plan Journey →</span>
+    </a>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section" id="contact">
+  <div class="cta-bg"></div>
+  <div class="section-label" style="justify-content:center;">Reach Us</div>
+  <h2>Ready to Reserve<br>Your <em>World?</em></h2>
+  <p>Our 24/7 concierge team is ready to craft your perfect experience. Nothing is impossible — just ask.</p>
+  <div class="cta-btns">
+    <a href="mailto:concierge@reservedworld.com" class="btn-gold">Send Enquiry</a>
+    <a href="tel:+18000000000" class="btn-outline">Call Concierge</a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="/" class="nav-logo">Reserved<span>World</span></a>
+      <p>Elite access to the world's most extraordinary experiences. Luxury travel, VIP events, and bespoke lifestyle management for the discerning few.</p>
+      <div class="footer-social">
+        <a href="#" title="Instagram">in</a>
+        <a href="#" title="Facebook">f</a>
+        <a href="#" title="LinkedIn">Li</a>
+        <a href="#" title="WhatsApp">W</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Luxury Hotels</a></li>
+        <li><a href="#">Villa Rentals</a></li>
+        <li><a href="#">Yacht Charters</a></li>
+        <li><a href="#">Private Jets</a></li>
+        <li><a href="#">Event Access</a></li>
+        <li><a href="#">Concierge</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Destinations</h4>
+      <ul>
+        <li><a href="#">Saint-Tropez</a></li>
+        <li><a href="#">Monaco</a></li>
+        <li><a href="#">Mykonos</a></li>
+        <li><a href="#">Ibiza</a></li>
+        <li><a href="#">Marbella</a></li>
+        <li><a href="#">Dubai</a></li>
+        <li><a href="#">Cannes</a></li>
+        <li><a href="#">London</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Events</h4>
+      <ul>
+        <li><a href="#">Formula 1</a></li>
+        <li><a href="#">Champions League</a></li>
+        <li><a href="#">Tennis Grand Slams</a></li>
+        <li><a href="#">Cannes Film Festival</a></li>
+        <li><a href="#">Fashion Week</a></li>
+        <li><a href="#">Concerts & Tours</a></li>
+        <li><a href="#">FIFA World Cup</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Refund Policy</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Reserved World. All Rights Reserved. <a href="https://reservedworld.com" style="color:var(--gold); text-decoration:none;">reservedworld.com</a></p>
+    <ul class="footer-bottom-links">
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Terms</a></li>
+      <li><a href="#">Cookies</a></li>
+    </ul>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/18000000000" class="wa-float" title="Chat on WhatsApp">💬</a>
+
+<script>
+  // ── HERO SLIDESHOW ──
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots   = document.querySelectorAll('.hero-dot');
+  const locations = [
+    'Monaco · Côte d\'Azur',
+    'Saint-Tropez · France',
+    'Monaco · The Riviera',
+    'Mykonos · Greece',
+    'Dubai · UAE'
+  ];
+  const locationEl = document.getElementById('heroLocation');
+  let current = 0;
+  let slideTimer;
+
+  function goToSlide(idx) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = idx;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    // Fade location label
+    locationEl.style.opacity = '0';
+    setTimeout(() => {
+      locationEl.textContent = locations[current];
+      locationEl.style.opacity = '1';
+    }, 600);
+  }
+
+  function nextSlide() {
+    goToSlide((current + 1) % slides.length);
+  }
+
+  function startTimer() {
+    clearInterval(slideTimer);
+    slideTimer = setInterval(nextSlide, 6000);
+  }
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      goToSlide(parseInt(dot.dataset.index));
+      startTimer();
+    });
+  });
+
+  locationEl.style.transition = 'opacity 0.6s ease';
+  startTimer();
+
+  // ── PARTICLE SYSTEM ──
+  const canvas = document.getElementById('heroCanvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let W, H;
+
+  function resize() {
+    W = canvas.width  = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  class Particle {
+    constructor() { this.reset(true); }
+    reset(initial = false) {
+      this.x = Math.random() * W;
+      this.y = initial ? Math.random() * H : H + 10;
+      this.size = Math.random() * 1.6 + 0.3;
+      this.speedY = -(Math.random() * 0.4 + 0.1);
+      this.speedX = (Math.random() - 0.5) * 0.15;
+      this.opacity = 0;
+      this.maxOpacity = Math.random() * 0.5 + 0.15;
+      this.fadeIn = true;
+      this.life = 0;
+      this.maxLife = Math.random() * 400 + 200;
+    }
+    update() {
+      this.x += this.speedX;
+      this.y += this.speedY;
+      this.life++;
+      if (this.fadeIn) {
+        this.opacity += 0.01;
+        if (this.opacity >= this.maxOpacity) this.fadeIn = false;
+      } else {
+        if (this.life > this.maxLife * 0.7) this.opacity -= 0.005;
+      }
+      if (this.opacity <= 0 || this.y < -10) this.reset();
+    }
+    draw() {
+      ctx.save();
+      ctx.globalAlpha = Math.max(0, this.opacity);
+      ctx.fillStyle = '#c9a96e';
+      ctx.shadowColor = '#c9a96e';
+      ctx.shadowBlur = 4;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  // Create 80 particles
+  for (let i = 0; i < 80; i++) particles.push(new Particle());
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => { p.update(); p.draw(); });
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
+
+  // ── FADE-UP ON SCROLL ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ── NAV SCROLL STYLE ──
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.style.background = window.scrollY > 60
+      ? 'rgba(8,8,8,0.97)'
+      : 'rgba(8,8,8,0.85)';
+  });
+
+  // ── TICKER NAV OFFSET ──
+  const ticker = document.querySelector('.ticker');
+  const nav = document.querySelector('nav');
+  nav.style.top = ticker.offsetHeight + 'px';
+</script>
+</body>
+</html>
