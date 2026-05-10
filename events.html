@@ -13,6 +13,19 @@
   }
   *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
   html, body { background: var(--black); color: var(--white); font-family:'Montserrat',sans-serif; font-weight:300; }
+    /* ─── MOBILE MENU TOGGLE ─── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    width: 24px; height: 1px;
+    background: var(--white);
+    transition: transform 0.3s, opacity 0.3s;
+  }
   
     /* ─── TICKER ─── */
   .ticker {
