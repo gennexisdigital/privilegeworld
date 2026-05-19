@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-gold {
+    @apply px-8 py-4 bg-gold text-black font-bold tracking-widest uppercase hover:opacity-90 transition-opacity;
+  }
+
+  .btn-outline {
+    @apply px-6 py-2 border border-gold text-gold font-semibold tracking-widest uppercase hover:bg-gold hover:text-black transition-all;
+  }
+
+  .section-label {
+    @apply text-xs font-bold tracking-widest uppercase text-gold flex items-center gap-3;
+  }
+
+  .section-title {
+    @apply font-serif text-5xl font-light leading-tight;
+  }
+}
+
+@keyframes fade-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scroll-pulse {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 0.2;
+    transform: scaleY(0.5);
+  }
+}
+
+* {
+  @apply scroll-smooth;
+}
+
+body {
+  @apply bg-black text-white;
+}
+
+::-webkit-scrollbar {
+  @apply w-1;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-black;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gold rounded;
+}
